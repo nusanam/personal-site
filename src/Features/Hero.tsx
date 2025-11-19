@@ -47,7 +47,7 @@ const HeroSection = () => {
 
   return (
     <section className='relative bg-transparent text-white w-full overflow-hidden'>
-      <div className='container relative pt-4 lg:pt-7 pb-7 md:pb-24 lg:pb-7'>
+      <div className='container relative pt-4 lg:pt-8 pb-7 md:pb-24 lg:pb-8'>
         <h1 className='text-4xl md:text-5xl lg:text-[4rem] font-light leading-[1.2] max-w-[900px]'>
           Hi I'm Ruth :)
         </h1>
