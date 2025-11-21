@@ -2,6 +2,16 @@
 
 const projects = [
   {
+    title: 'Thyroid-Reproductive Hormone Health Explorer',
+    subtitle:
+      "Visualizes relationship between thyroid function and women's health",
+    description:
+      'A node-link visualization showing the cascade from thyroid dysfunction to reproductive impacts, with interactive depth at each node.',
+    tech: ['React', 'D3.js', 'Typescript', 'TailwindCSS'],
+    achievement: "To be featured on Reproductive Fertility Doctor\'s Podcast",
+    link: 'https://thyroid-explorer.vercel.app/',
+  },
+  {
     title: 'Reactime',
     subtitle: 'Open Source React DevTool',
     description:
@@ -9,37 +19,6 @@ const projects = [
     tech: ['React', 'D3.js', 'Chrome Extension API', 'TypeScript'],
     achievement: 'Nominated for React Open Source Award 2020',
     link: 'https://github.com/reactime',
-  },
-  {
-    title: 'Clinical Trial Data Visualization',
-    subtitle: 'Medidata Solutions',
-    description:
-      'Built metric-driven data visualizations using D3.js and HighCharts for AI-powered clinical trial platform.',
-    tech: ['React', 'D3.js', 'HighCharts', 'TypeScript'],
-    achievement: 'Contributed to 30% increase in customer adoption',
-  },
-  {
-    title: 'Supply Chain Modernization',
-    subtitle: 'Premier Inc.',
-    description:
-      'Modernized 10-year Angular + .NET monolith into React microfrontends with feature flags for safe incremental rollout.',
-    tech: [
-      'React',
-      'TypeScript',
-      'GraphQL',
-      'Zustand',
-      'TanStack Query',
-      'Feature Flags',
-    ],
-    achievement: 'Improved TTI and enabled safe migration strategy',
-  },
-  {
-    title: 'E-commerce Platform',
-    subtitle: 'Joy (Contract)',
-    description:
-      'Reduced email template redundancy by 36% through React architecture improvements and implemented global error handling.',
-    tech: ['React', 'Node.js', 'AWS', 'Microservices'],
-    achievement: '36% reduction in template redundancy',
   },
 ];
 
