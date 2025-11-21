@@ -2,11 +2,11 @@
 
 const projects = [
   {
-    title: 'Thyroid-Reproductive Hormone Health Explorer',
+    title: 'Thyroid Reproductive Hormone Health Explorer',
     subtitle:
-      "Visualizes relationship between thyroid function and women's health",
+      "Uses evidence-based research to visualize hypothyroid effects on women's health",
     description:
-      'A node-link visualization showing the cascade from thyroid dysfunction to reproductive impacts, with interactive depth at each node.',
+      'A node-link visualization showing the cascade from thyroid dysfunction to reproductive impacts with interactive depth at each node.',
     tech: ['React', 'D3.js', 'Typescript', 'TailwindCSS'],
     achievement: "To be featured on Reproductive Fertility Doctor\'s Podcast",
     link: 'https://thyroid-explorer.vercel.app/',
