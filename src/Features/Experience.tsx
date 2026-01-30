@@ -5,12 +5,10 @@ const experiences = [
     period: 'Aug 2024 – Present',
     location: '',
     highlights: [
-      'Built a greenfield React + TypeScript frontend and contributing to the .NET Core + C# CQRS backend for Premier’s next-generation supply-chain platform.',
-      'Modernized a decade-old Angular/.NET monolith into React microfrontends with safe, feature-flag-driven rollouts.',
-      'Defined GraphQL and API contracts that reduced redundancy and improved data accuracy across the app.',
-      'Optimized ASP.NET Core and EF Core queries to reduce latency and strengthen backend reliability.',
-      'Automated a .NET bootstrap tool that cut Windows VM environment setup from 25 minutes to 3.',
-      'Identified critical domain issues that improved system stability ahead of a $2.6B acquisition.',
+      'Recognized for technical precision and surfacing critical domain gaps, optimizing releases ahead of $2.6B acquisition',
+      'Drove architecture decisions on greenfield React/TypeScript frontend and .NET + C# CQRS backend API contracts, delivering flexible UI foundations ahead of specs to unblock downstream teams',
+      'Modernized a 10-year Angular + .NET monolith running on Windows VM infrastructure to microfrontends with feature flag rollouts, enabling safe incremental migration of core supply chain features',
+      'Engineered .NET utility with LangChain and Azure OpenAI RAG to automate local environment bootstrapping and onboarding documentation; slashed VM setup time by 88% and reclaimed 480+ annual engineering hours,',
     ],
   },
   {
@@ -19,11 +17,10 @@ const experiences = [
     period: 'Nov 2022 – Aug 2024',
     location: 'New York, NY',
     highlights: [
-      'Developed metric-driven D3.js and HighCharts visualizations for an AI-powered clinical trial platform, contributing to a 30% increase in customer adoption.',
-      'Refactored core UI architecture to reduce cyclomatic complexity and improve maintainability.',
-      'Standardized design patterns using Atomic Design to increase consistency and speed up feature delivery.',
-      'Improved frontend performance by redesigning API contracts and optimizing client data workflows.',
-      'Enhanced delivery predictability by introducing engineering refinement and migrating the component library to Artifactory.',
+      'Built metric-driven D3.js visualizations for AI-powered platform, contributing to 30% increase in customer adoption',
+      'Led Q2 charting initiative: designed abstractions to eliminate repetitive configuration, shipping 2 weeks ahead of deadline',
+      'Refactored architecture (HOCs, reducers, data pipelines) for better maintainability, cutting avg. cyclomatic complexity by 33%',
+      'Improved frontend latency by ~0.8s through API contract redesign and optimized client-side data handling',
     ],
   },
   {
@@ -32,9 +29,8 @@ const experiences = [
     period: 'Apr 2022 – Oct 2022',
     location: '',
     highlights: [
-      'Stabilized a fast-scaling microservice architecture during the rollout of a new dropshipping feature.',
-      'Introduced global error-handling middleware in Node to restore observability after a 60% drop in exception signal.',
-      'Used telemetry to isolate AWS media-upload failures, enabling rapid recovery and safe database rollbacks.',
+      'Stabilized rapidly scaling microservice architecture by building global error handling middleware in Node, restoring service observability and reducing unhandled exceptions by 60%',
+      'solated AWS upload failures using telemetry, enabling rapid recovery + safe database rollbacks during production incidents',
     ],
   },
   {
@@ -43,8 +39,8 @@ const experiences = [
     period: 'Jan 2021 – Apr 2022',
     location: '',
     highlights: [
-      'Led a small engineering team to deliver a TDD-driven MVP improving access to legal-aid resources.',
-      'Architected the platform’s frontend and backend under tight deadlines using a streamlined CI workflow.',
+      'Led 3-person engineering team to design and launch an application to improve access to legal aid resources',
+      'Delivered frontend and backend architecture with CEO under tight timelines using TDD and lightweight CI/CD pipeline',
     ],
   },
   {
@@ -53,9 +49,8 @@ const experiences = [
     period: 'Aug 2019 – Dec 2022',
     location: 'New York, NY',
     highlights: [
-      'Modernized the core learning platform with Docker to support fully remote workflows during the pandemic.',
-      'Automated YAML-to-React component generation to help non-engineers publish content rapidly.',
-      'Led public workshops teaching JavaScript, debugging, testing, and deployment to engineering cohorts.',
+      'Transformed core platform infrastructure to power remote workflows during the pandemic using Docker',
+      'Led public JavaScript workshops for over 100 people; taught AWS deployment workshops to bootcamp cohorts',
     ],
   },
   {
@@ -64,8 +59,9 @@ const experiences = [
     period: 'Aug 2019 – Dec 2021',
     location: 'New York, NY',
     highlights: [
-      'Co-founded Reactime, a real-time React state-visualization devtool nominated for a React Open Source Award.',
-      'Built the D3.js node-graph visualizer integrated into Chrome DevTools for live state inspection and time-travel debugging.',
+      'Architected Reactime, a time-travel debugging devtool for React state; A/B tested options for a D3.js visualization rendering state changes via tree traversal of React fiber and AST parsing to detect React hooks in webpack bundles',
+      'Published npm package for state tracking integration with Chrome devtools',
+      'Configured port-based system for simultaneous debugging of multiple React applications',
     ],
   },
 ];

@@ -18,8 +18,7 @@ const ContactSection = () => {
     >
       <div className='max-w-[1400px] mx-auto px-6 md:px-10 xl:px-20 text-center'>
         <p className='text-xl md:text-2xl font-light text-white/80 max-w-[800px] mx-auto mb-12'>
-          I'm deeply passionate about preventative health, system architecture,
-          and pixel perfect UI. I'm open to remote-only opportunities.
+          Open to remote roles at mission driven companies.
         </p>
 
         <div className='flex flex-col sm:flex-row items-center justify-center gap-6'>
@@ -38,7 +37,7 @@ const ContactSection = () => {
             target='_blank'
             rel='noopener noreferrer'
             className='group px-8 py-4 bg-transparent border-2 border-white text-white rounded-full font-medium text-lg hover:bg-white hover:text-black transition-all duration-300 hover:scale-105'
-            href='https://ruth-anam-fullstack-resume.s3.us-east-2.amazonaws.com/Ruth+Anam_resume_25.pdf'
+            href='https://ruth-anam-fullstack-resume.s3.us-east-2.amazonaws.com/Ruth+Anam+2026.pdf'
           >
             Fullstack Resume
           </a>

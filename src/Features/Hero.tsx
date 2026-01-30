@@ -54,18 +54,17 @@ const HeroSection = () => {
         <p className='text-xl md:text-2xl lg:text-3xl font-light leading-[1.4] max-w-[900px] mt-8 text-white/80'>
           Senior Fullstack Engineer (7+ YOE) specializing in high performance{' '}
           <span className='underline decoration-2 decoration-accent-teal underline-offset-[6px]'>
-            React, TypeScript, C#, ASP.NET Core, EF Core, GraphQL, Node.js, and
-            Azure / AWS.
+            React, TypeScript, .NET
           </span>
         </p>{' '}
         <p className='text-xl md:text-xl lg:text-2xl font-light leading-[1.4] max-w-[900px] mt-8 text-white/80'>
-          Strong background in system modernization, microfrontend and
-          microservice transformation, API contract design, data visualization,
-          data intensive workflows, and complex UI architecture.
+          Co-founded Reactime, a React DevTools project with 2,200+ GitHub
+          stars, nominated for a React Open Source Award by the Meta React team.
         </p>
         <p className='text-xl md:text-xl lg:text-2xl font-light leading-[1.4] max-w-[900px] mt-8 text-white/80'>
-          Experienced in translating ambiguous product requirements into
-          scalable architecture across frontend, backend, and infrastructure.
+          Currently building supply chain software at Premier Inc. during a
+          $2.6B acquisition. Previously built AI-powered clinical trial
+          visualizations at Medidata.
         </p>
         <div className='mt-8 flex flex-wrap gap-4 text-base md:text-lg text-white/60'>
           <span>Austin, TX</span>
