@@ -1,5 +1,5 @@
 /* Updated: 2025-11-18T01:20:32.890Z */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&display=swap');
 @import "tailwindcss";
 @import "tw-animate-css";
 
@@ -76,6 +76,7 @@
   --color-gradient-cyan: #06B6D4;
 
   --font-inter: "Inter", sans-serif;
+  --font-serif: "Playfair Display", Georgia, serif;
 
   --animate-accordion-down: accordion-down 0.2s ease-out;
   --animate-accordion-up: accordion-up 0.2s ease-out;

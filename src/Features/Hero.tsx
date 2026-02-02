@@ -2,23 +2,6 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 
-const fadeUpVariants = {
-  hidden: {
-    opacity: 0,
-    y: 30,
-    filter: 'blur(8px)'
-  },
-  visible: (delay: number) => ({
-    opacity: 1,
-    y: 0,
-    filter: 'blur(0px)',
-    transition: {
-      duration: 0.8,
-      delay: delay,
-      ease: [0.25, 0.4, 0.25, 1] as const,
-    },
-  }),
-};
 
 const HeroSection = () => {
   const [emailTooltip, setEmailTooltip] = useState('Click me to copy!');
@@ -31,22 +14,20 @@ const HeroSection = () => {
 
   return (
     <section className='relative bg-transparent text-white w-full overflow-hidden'>
-      <div className='container relative pt-4 lg:pt-8 pb-7 md:pb-24 lg:pb-8'>
+      <div className='container relative pt-4 lg:pt-8 pb-24 md:pb-32 lg:pb-40'>
         <motion.h1
-          className='text-4xl md:text-5xl lg:text-[4rem] font-light leading-[1.2] max-w-[900px]'
-          variants={fadeUpVariants}
-          initial="hidden"
-          animate="visible"
-          custom={0.1}
+          className='text-4xl md:text-5xl lg:text-[4rem] font-medium leading-[1.2] max-w-[900px]'
+          initial={{ opacity: 0, x: -40 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.7, delay: 0.1, ease: 'easeOut' }}
         >
           Hi I'm Ruth :)
         </motion.h1>
         <motion.p
           className='text-xl md:text-2xl lg:text-3xl font-light leading-[1.4] max-w-[900px] mt-8 text-white/80'
-          variants={fadeUpVariants}
-          initial="hidden"
-          animate="visible"
-          custom={0.25}
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.25, ease: 'easeOut' }}
         >
           Senior Fullstack Engineer (7+ YOE) specializing in high performance{' '}
           <span className='underline decoration-2 decoration-accent-teal underline-offset-[6px]'>
@@ -55,20 +36,18 @@ const HeroSection = () => {
         </motion.p>
         <motion.p
           className='text-xl md:text-xl lg:text-2xl font-light leading-[1.4] max-w-[900px] mt-8 text-white/80'
-          variants={fadeUpVariants}
-          initial="hidden"
-          animate="visible"
-          custom={0.4}
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.4, ease: 'easeOut' }}
         >
           Co-founded Reactime, a React DevTools project with 2,200+ GitHub
           stars, nominated for a React Open Source Award by the Meta React team.
         </motion.p>
         <motion.p
           className='text-xl md:text-xl lg:text-2xl font-light leading-[1.4] max-w-[900px] mt-8 text-white/80'
-          variants={fadeUpVariants}
-          initial="hidden"
-          animate="visible"
-          custom={0.55}
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.55, ease: 'easeOut' }}
         >
           Currently building supply chain software at Premier Inc. during a
           $2.6B acquisition. Previously built AI-powered clinical trial
@@ -76,10 +55,9 @@ const HeroSection = () => {
         </motion.p>
         <motion.div
           className='mt-8 flex flex-wrap gap-4 text-base md:text-lg text-white/60'
-          variants={fadeUpVariants}
-          initial="hidden"
-          animate="visible"
-          custom={0.7}
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.7, ease: 'easeOut' }}
         >
           <span>Austin, TX</span>
           <span>•</span>

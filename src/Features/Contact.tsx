@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { motion } from 'framer-motion';
 
 const ContactSection = () => {
   const [emailTooltip, setEmailTooltip] = useState('Click me to copy!');
@@ -17,11 +18,23 @@ const ContactSection = () => {
       className='bg-gradient-to-br from-accent-purple/20 to-accent-teal/20 text-white py-20 md:py-32'
     >
       <div className='max-w-[1400px] mx-auto px-6 md:px-10 xl:px-20 text-center'>
-        <p className='text-xl md:text-2xl font-light text-white/80 max-w-[800px] mx-auto mb-12'>
+        <motion.p
+          className='text-xl md:text-2xl font-light text-white/80 max-w-[800px] mx-auto mb-12'
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-100px' }}
+          transition={{ duration: 0.6, ease: 'easeOut' }}
+        >
           Open to remote roles at mission driven companies.
-        </p>
+        </motion.p>
 
-        <div className='flex flex-col sm:flex-row items-center justify-center gap-6'>
+        <motion.div
+          className='flex flex-col sm:flex-row items-center justify-center gap-6'
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-100px' }}
+          transition={{ duration: 0.6, delay: 0.15, ease: 'easeOut' }}
+        >
           <div className='relative group'>
             <button
               onClick={copyEmail}
@@ -49,7 +62,7 @@ const ContactSection = () => {
           >
             LinkedIn Profile
           </a>
-        </div>
+        </motion.div>
 
         <div className='mt-16 pt-8 border-t border-white/20'></div>
       </div>

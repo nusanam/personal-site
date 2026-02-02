@@ -1,6 +1,7 @@
 'use client';
 
 import Image from 'next/image';
+import { motion } from 'framer-motion';
 
 const projects = [
   {
@@ -30,11 +31,23 @@ const ProjectsHighlight = () => {
   return (
     <section id='projects' className='text-white py-16 md:py-24'>
       <div className='max-w-[1400px] mx-auto px-6 md:px-10 xl:px-20'>
-        <h2 className='text-3xl md:text-4xl lg:text-5xl font-light mb-12 md:mb-16'>
+        <motion.h2
+          className='text-3xl md:text-4xl lg:text-5xl font-light mb-12 md:mb-16'
+          initial={{ opacity: 0, x: -40 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true, margin: '-100px' }}
+          transition={{ duration: 0.7, ease: 'easeOut' }}
+        >
           Featured Projects
-        </h2>
+        </motion.h2>
 
-        <div className='grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-10'>
+        <motion.div
+          className='grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-10'
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-100px' }}
+          transition={{ duration: 0.6, delay: 0.2, ease: 'easeOut' }}
+        >
           {projects.map((project, index) => (
             <div
               key={index}
@@ -108,7 +121,7 @@ const ProjectsHighlight = () => {
               )}
             </div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );

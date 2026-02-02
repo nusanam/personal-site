@@ -1,3 +1,7 @@
+'use client';
+
+import { motion } from 'framer-motion';
+
 const experiences = [
   {
     company: 'Premier Inc.',
@@ -70,11 +74,23 @@ const ExperienceSection = () => {
   return (
     <section id='experience' className='text-white py-16 md:py-24'>
       <div className='max-w-[1400px] mx-auto px-6 md:px-10 xl:px-20'>
-        <h2 className='text-3xl md:text-4xl lg:text-5xl font-light mb-12 md:mb-16'>
+        <motion.h2
+          className='text-3xl md:text-4xl lg:text-5xl font-light mb-12 md:mb-16'
+          initial={{ opacity: 0, x: -40 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true, margin: '-100px' }}
+          transition={{ duration: 0.7, ease: 'easeOut' }}
+        >
           Experience
-        </h2>
+        </motion.h2>
 
-        <div className='space-y-12 md:space-y-16'>
+        <motion.div
+          className='space-y-12 md:space-y-16'
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-100px' }}
+          transition={{ duration: 0.6, delay: 0.2, ease: 'easeOut' }}
+        >
           {experiences.map((exp, index) => (
             <div
               key={index}
@@ -111,7 +127,7 @@ const ExperienceSection = () => {
               </ul>
             </div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );
