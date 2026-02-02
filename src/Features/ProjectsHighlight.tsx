@@ -1,15 +1,18 @@
 'use client';
 
+import Image from 'next/image';
+
 const projects = [
   {
     title: 'Thyroid Reproductive Hormone Health Explorer',
     subtitle:
       "Uses evidence-based research to visualize hypothyroid effects on women's health",
     description:
-      'A node-link visualization showing the cascade from thyroid dysfunction to reproductive impacts with interactive depth at each node.',
+      'A thyroid health exploration tool showing the cascade from thyroid dysfunction to reproductive impacts with interactive depth at each node.',
     tech: ['React', 'D3.js', 'Typescript', 'TailwindCSS'],
     achievement: "To be featured on Reproductive Fertility Doctor\'s Podcast",
     link: 'https://thyroid-explorer.vercel.app/',
+    image: '/assets/thyroid.png',
   },
   {
     title: 'Reactime',
@@ -18,7 +21,8 @@ const projects = [
       'Chrome DevTools extension for visualizing React state changes in real-time. Nominated for React Open Source Award (2020).',
     tech: ['React', 'D3.js', 'Chrome Extension API', 'TypeScript'],
     achievement: 'Nominated for React Open Source Award 2020',
-    link: 'https://github.com/reactime',
+    link: 'https://github.com/open-source-labs/Reactime',
+    image: '/assets/reactimev26.png',
   },
 ];
 
@@ -34,8 +38,32 @@ const ProjectsHighlight = () => {
           {projects.map((project, index) => (
             <div
               key={index}
-              className='group bg-gradient-to-br from-white/5 to-white/[0.02] rounded-3xl p-8 md:p-10 border border-white/10 hover:border-accent-teal/50 transition-all duration-500 hover:scale-[1.02] hover:shadow-2xl hover:shadow-accent-teal/10'
+              className='group relative bg-gradient-to-br from-white/5 to-white/[0.02] rounded-3xl p-8 md:p-10 border border-white/10 hover:border-accent-teal/50 transition-all duration-500 hover:shadow-2xl hover:shadow-accent-teal/10 overflow-hidden'
             >
+              {/* Image overlay on hover */}
+              {project.image && (
+                <div className='absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10'>
+                  <Image
+                    src={project.image}
+                    alt={`${project.title} screenshot`}
+                    fill
+                    className='object-cover'
+                  />
+                  <div className='absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-black/30' />
+                  <div className='absolute bottom-6 left-8 right-8'>
+                    <p className='text-white text-lg font-medium mb-2'>{project.title}</p>
+                    <a
+                      href={project.link}
+                      target='_blank'
+                      rel='noopener noreferrer'
+                      className='inline-flex items-center text-accent-teal hover:text-white transition-colors duration-200 underline underline-offset-4'
+                    >
+                      View Project →
+                    </a>
+                  </div>
+                </div>
+              )}
+
               <div className='mb-4'>
                 <h3 className='text-2xl md:text-3xl font-medium text-white mb-2 group-hover:text-accent-teal transition-colors duration-300'>
                   {project.title}

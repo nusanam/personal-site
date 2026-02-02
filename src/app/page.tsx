@@ -15,9 +15,9 @@ export default function Home() {
 
       <div className='pt-[80px] relative z-10'>
         <HeroSection />
+        <ProjectsHighlight />
         <ExperienceSection />
         <SkillsSection />
-        <ProjectsHighlight />
         <ContactSection />
       </div>
     </main>

@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import React, { useState, useEffect } from 'react';
 
@@ -19,21 +19,19 @@ const Navigation = () => {
         scrolled ? 'bg-nav-bg backdrop-blur-md' : 'bg-transparent'
       }`}
     >
-      <div className="max-w-[1400px] mx-auto px-6 md:px-10 xl:px-20 h-[80px] flex items-center justify-between">
-        <div className="text-xl font-medium text-white">
-          Ruth Anam
-        </div>
-        <div className="hidden md:flex items-center gap-8 text-nav-item text-text-secondary">
-          <a href="#experience" className="hover:text-white transition-colors">
-            Experience
-          </a>
-          <a href="#skills" className="hover:text-white transition-colors">
-            Skills
-          </a>
-          <a href="#projects" className="hover:text-white transition-colors">
+      <div className='max-w-[1400px] mx-auto px-6 md:px-10 xl:px-20 h-[80px] flex items-center justify-between'>
+        <div className='text-xl font-medium text-white'>Ruth Anam</div>
+        <div className='hidden md:flex items-center gap-8 text-nav-item text-text-secondary'>
+          <a href='#projects' className='hover:text-white transition-colors'>
             Projects
           </a>
-          <a href="#contact" className="hover:text-white transition-colors">
+          <a href='#experience' className='hover:text-white transition-colors'>
+            Experience
+          </a>
+          <a href='#skills' className='hover:text-white transition-colors'>
+            Skills
+          </a>
+          <a href='#contact' className='hover:text-white transition-colors'>
             Contact
           </a>
         </div>
