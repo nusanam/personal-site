@@ -1,0 +1,9 @@
+{
+  "redirects": [
+    {
+      "source": "/thyroid",
+      "destination": "https://thyroid-explorer.vercel.app",
+      "permanent": true
+    }
+  ]
+}
