@@ -34,7 +34,7 @@ const experiences = [
     location: '',
     highlights: [
       'Stabilized rapidly scaling microservice architecture by building global error handling middleware in Node, restoring service observability and reducing unhandled exceptions by 60%',
-      'solated AWS upload failures using telemetry, enabling rapid recovery + safe database rollbacks during production incidents',
+      'Isolated AWS upload failures using telemetry, enabling rapid recovery + safe database rollbacks during production incidents',
     ],
   },
   {

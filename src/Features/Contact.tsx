@@ -25,7 +25,7 @@ const ContactSection = () => {
           viewport={{ once: true, margin: '-100px' }}
           transition={{ duration: 0.6, ease: 'easeOut' }}
         >
-          Open to remote roles at mission driven companies.
+          Open to fulltime roles at mission driven companies.
         </motion.p>
 
         <motion.div
@@ -52,7 +52,7 @@ const ContactSection = () => {
             className='group px-8 py-4 bg-transparent border-2 border-white text-white rounded-full font-medium text-lg hover:bg-white hover:text-black transition-all duration-300 hover:scale-105'
             href='https://ruth-anam-fullstack-resume.s3.us-east-2.amazonaws.com/Ruth+Anam+2026.pdf'
           >
-            Fullstack Resume
+            Resume
           </a>
           <a
             href='https://linkedin.com/in/ruthanam'
