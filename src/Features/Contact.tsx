@@ -46,14 +46,14 @@ const ContactSection = () => {
               {emailTooltip}
             </span>
           </div>
-          {/* <a
+          <a
             target='_blank'
             rel='noopener noreferrer'
             className='group px-8 py-4 bg-transparent border-2 border-white text-white rounded-full font-medium text-lg hover:bg-white hover:text-black transition-all duration-300 hover:scale-105'
-            href='https://ruth-anam-fullstack-resume.s3.us-east-2.amazonaws.com/Ruth+Anam+2026.pdf'
+            href='https://ruth-anam-fullstack-resume.s3.us-east-2.amazonaws.com/Ruth+Anam+resume+feb16.pdf'
           >
             Resume
-          </a> */}
+          </a>
           <a
             href='https://linkedin.com/in/ruthanam'
             target='_blank'
