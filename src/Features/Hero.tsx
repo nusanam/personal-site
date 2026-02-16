@@ -2,7 +2,6 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 
-
 const HeroSection = () => {
   const [emailTooltip, setEmailTooltip] = useState('Click me to copy!');
 
@@ -31,7 +30,7 @@ const HeroSection = () => {
         >
           Senior Fullstack Engineer (7+ YOE) specializing in high performance{' '}
           <span className='underline decoration-2 decoration-accent-teal underline-offset-[6px]'>
-            React, TypeScript, .NET
+            React, TypeScript, Node, & Python
           </span>
         </motion.p>
         <motion.p
@@ -40,8 +39,9 @@ const HeroSection = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.4, ease: 'easeOut' }}
         >
-          Co-founded Reactime, a React DevTools project with 2,200+ GitHub
-          stars, nominated for a React Open Source Award by the Meta React team.
+          Co-founded<em> Reactime</em>, a state debugging devtool with
+          <em> 2,200+ GitHub stars</em>, nominated for a React Open Source
+          Award.
         </motion.p>
         <motion.p
           className='text-xl md:text-xl lg:text-2xl font-light leading-[1.4] max-w-[900px] mt-8 text-white/80'
@@ -49,9 +49,10 @@ const HeroSection = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.55, ease: 'easeOut' }}
         >
-          Currently building supply chain software at Premier Inc. during a
-          $2.6B acquisition. Previously built AI-powered clinical trial
-          visualizations at Medidata.
+          Currently architecting <em>React </em>and <em>Python </em>/{' '}
+          <em>Node</em> services for a greenfield supply chain platform at Premier Inc.
+          during a <em>$2.6B acquisition</em>. Previously engineered AI-powered
+          clinical trial visualizations at Medidata.
         </motion.p>
         <motion.div
           className='mt-8 flex flex-wrap gap-4 text-base md:text-lg text-white/60'

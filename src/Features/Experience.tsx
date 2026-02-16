@@ -11,8 +11,8 @@ const experiences = [
     highlights: [
       'Recognized for technical precision and surfacing critical domain gaps, optimizing releases ahead of $2.6B acquisition',
       'Drove architecture decisions on greenfield React/TypeScript frontend and .NET + C# CQRS backend API contracts, delivering flexible UI foundations ahead of specs to unblock downstream teams',
-      'Modernized a 10-year Angular + .NET monolith running on Windows VM infrastructure to microfrontends with feature flag rollouts, enabling safe incremental migration of core supply chain features',
-      'Engineered .NET utility with LangChain and Azure OpenAI RAG to automate local environment bootstrapping and onboarding documentation; slashed VM setup time by 88% and reclaimed 480+ annual engineering hours,',
+      'Modernized legacy .NET monolith by strangling reporting modules into high performance FastAPI microservices while migrating to React microfrontends. This architecture leverages feature flags for 0% downtime during rollout of new supply chain analytics',
+      'Engineered a Python-based automation engine using LangChain and Azure OpenAI (RAG) to orchestrate local environment bootstrapping; integrated PyWin32 for OS level synchronization and git workflow automation, slashing VM setup time by 88% and saving 480+ annual engineering hours',
     ],
   },
   {
@@ -22,7 +22,7 @@ const experiences = [
     location: 'New York, NY',
     highlights: [
       'Built metric-driven D3.js visualizations for AI-powered platform, contributing to 30% increase in customer adoption',
-      'Led Q2 charting initiative: designed abstractions to eliminate repetitive configuration, shipping 2 weeks ahead of deadline',
+      'Led Q2 charting initiative: designed Python service layers to eliminate repetitive config, shipping 2 weeks ahead of deadline',
       'Refactored architecture (HOCs, reducers, data pipelines) for better maintainability, cutting avg. cyclomatic complexity by 33%',
       'Improved frontend latency by ~0.8s through API contract redesign and optimized client-side data handling',
     ],
@@ -43,8 +43,8 @@ const experiences = [
     period: 'Jan 2021 – Apr 2022',
     location: '',
     highlights: [
-      'Led 3-person engineering team to design and launch an application to improve access to legal aid resources',
-      'Delivered frontend and backend architecture with CEO under tight timelines using TDD and lightweight CI/CD pipeline',
+      'Led 3-person engineering team to design and launch a platform improving access to legal resources',
+      'Partnered with CEO to launch a greenfield React, Node, and Python platform; engineered FastAPI for data logic and Express for real-time APIs with GitHub Actions CI/CD for 100% availability via TDD',
     ],
   },
   {
@@ -54,7 +54,7 @@ const experiences = [
     location: 'New York, NY',
     highlights: [
       'Transformed core platform infrastructure to power remote workflows during the pandemic using Docker',
-      'Led public JavaScript workshops for over 100 people; taught AWS deployment workshops to bootcamp cohorts',
+      'Led public JavaScript workshops for over 100 people; taught Python/AWS deployment workshops to bootcamp cohortss',
     ],
   },
   {
