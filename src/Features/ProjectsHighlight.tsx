@@ -10,7 +10,7 @@ const projects = [
       "Uses evidence-based research to visualize hypothyroid effects on women's health",
     description:
       'A thyroid health exploration tool showing the cascade from thyroid dysfunction to reproductive impacts with interactive depth at each node.',
-    tech: ['React', 'D3.js', 'Typescript', 'TailwindCSS'],
+    tech: ['React', 'D3.js', 'Python', 'Typescript', 'TailwindCSS'],
     achievement: "To be featured on Reproductive Fertility Doctor\'s Podcast",
     link: 'https://thyroid-explorer.vercel.app/',
     image: '/assets/thyroid.png',
@@ -19,7 +19,7 @@ const projects = [
     title: 'Reactime',
     subtitle: 'Open Source React DevTool',
     description:
-      'Chrome DevTools extension for visualizing React state changes in real-time. Nominated for React Open Source Award (2020).',
+      'Chrome DevTools extension for visualizing React state changes in real time. Nominated for React Open Source Award (2020).',
     tech: ['React', 'D3.js', 'Chrome Extension API', 'TypeScript'],
     achievement: 'Nominated for React Open Source Award 2020',
     link: 'https://github.com/open-source-labs/Reactime',
@@ -64,7 +64,9 @@ const ProjectsHighlight = () => {
                   />
                   <div className='absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-black/30' />
                   <div className='absolute bottom-6 left-8 right-8'>
-                    <p className='text-white text-lg font-medium mb-2'>{project.title}</p>
+                    <p className='text-white text-lg font-medium mb-2'>
+                      {project.title}
+                    </p>
                     <a
                       href={project.link}
                       target='_blank'
