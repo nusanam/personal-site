@@ -7,7 +7,7 @@ const experiences = [
     company: 'Premier Inc.',
     role: 'Software Engineer',
     period: 'Aug 2024 – Present',
-    location: '',
+    location: 'Remote',
     highlights: [
       'Recognized for technical precision and surfacing critical domain gaps, optimizing releases ahead of $2.6B acquisition',
       'Drove architecture decisions on greenfield React/TypeScript frontend and .NET + C# CQRS backend API contracts, delivering flexible UI foundations ahead of specs to unblock downstream teams',
@@ -28,10 +28,10 @@ const experiences = [
     ],
   },
   {
-    company: 'Joy (Contract)',
-    role: 'Software Engineer',
+    company: 'Joy',
+    role: 'Independent Contractor for Client',
     period: 'Apr 2022 – Oct 2022',
-    location: '',
+    location: 'Remote',
     highlights: [
       'Stabilized rapidly scaling microservice architecture by building global error handling middleware in Node, restoring service observability and reducing unhandled exceptions by 60%',
       'Isolated AWS upload failures using telemetry, enabling rapid recovery + safe database rollbacks during production incidents',
@@ -39,18 +39,18 @@ const experiences = [
   },
   {
     company: 'Peacekeepers',
-    role: 'Software Engineer',
+    role: 'Founding Software Engineer',
     period: 'Jan 2021 – Apr 2022',
-    location: '',
+    location: 'New York / Remote',
     highlights: [
       'Led 3-person engineering team to design and launch a platform improving access to legal resources',
       'Partnered with CEO to launch a greenfield React, Node, and Python platform; engineered FastAPI for data logic and Express for real-time APIs with GitHub Actions CI/CD for 100% availability via TDD',
     ],
   },
   {
-    company: 'Codesmith',
-    role: 'Software Engineer (Platform)',
-    period: 'Aug 2019 – Dec 2022',
+    company: 'Codesmith EdTech Platform',
+    role: 'Platform Engineer',
+    period: 'Oct 2019 – Jan 2021',
     location: 'New York, NY',
     highlights: [
       'Transformed core platform infrastructure to power remote workflows during the pandemic using Docker',
@@ -59,13 +59,35 @@ const experiences = [
   },
   {
     company: 'Reactime (Open Source)',
-    role: 'Co-founder & Software Engineer',
+    role: 'Co-founding Engineer',
     period: 'Aug 2019 – Dec 2021',
     location: 'New York, NY',
     highlights: [
       'Architected Reactime, a time-travel debugging devtool for React state; A/B tested options for a D3.js visualization rendering state changes via tree traversal of React fiber and AST parsing to detect React hooks in webpack bundles',
       'Published npm package for state tracking integration with Chrome devtools',
       'Configured port-based system for simultaneous debugging of multiple React applications',
+    ],
+  },
+  {
+    company: 'Allergy Asthma Sleep Center',
+    role: 'Db Admin & Developer',
+    period: '2017 – 2019',
+    location: 'New York, NY',
+    highlights: [
+      'Built custom patient data platform on AWS with SQL database, role based authentication, and clinical intake forms to digitize patient allergy and sleep records from previously managed handwritten documentation',
+      'Designed UIs enabling clinical staff to enter and retrieve patient information across unified system, improving data accessibility and reducing administrative overhead for providers',
+      'Automated data synchronization across previously siloed clinical records, streamlining documentation routing to appropriate providers, reducing manual processing time by hours a day',
+    ],
+  },
+  {
+    company: 'MBCC (Nonprofit) — Web Developer',
+    role: 'Web Developer',
+    period: '2014-2016',
+    location: 'New York, NY + Boston, MA (travel required)',
+    highlights: [
+      'Developed and maintained consumer facing web features including dynamic content displays and event pages, managing thousands of media assets across campaigns',
+      'Built intake and registration pages integrating with external platforms to dynamically generate user profile pages, improving fundraiser and event participant onboarding experiences',
+      'Maintained operational databases tracking stakeholder relationships across sponsors, volunteers, and participants for multiple annual events',
     ],
   },
 ];
