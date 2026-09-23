@@ -6,14 +6,13 @@ const TITLE = 'Hi, I’m Ruth :)';
 const TYPE_MS = 65;
 
 const intro = [
-  "I'm a full stack engineer, about 7 years in, mostly in healthcare. Most of my work these days is on AI systems: the orchestration underneath them, the guardrails around them, and the operator tools that make them safe to actually run.",
-  'Most recently I was at Tomorrow Health, building THEA, an autonomous voice agent that calls provider offices to track down the clinical documents needed to bill home medical equipment orders. I owned the task queue running the business rules, the GraphQL layer behind it, and the console the operations team used to watch and correct it. Before that, a RAG workflow at Premier, clinical trial visualizations at Medidata, and Reactime, an open source React devtool I co-founded that has picked up 2,200+ GitHub stars.',
-  "I'm looking for my next team right now, ideally somewhere I can keep owning AI systems end to end. If that sounds like your group, I'd love to talk.",
+  'Built autonomous voice agent that calls offices to chase documentation to bill home medical equipment orders + AI fax intake pipeline at Tomorrow Health.',
+  'Prior to that: a RAG workflow at Premier, clinical trial visualizations at Medidata, and Reactime, an open source React devtool I co-founded that has picked up 2,200+ GitHub stars.',
 ];
 
 const container = {
   hidden: {},
-  show: { transition: { staggerChildren: 0.18, delayChildren: 0.15 } },
+  show: { transition: { staggerChildren: 0.45, delayChildren: 0.2 } },
 };
 
 const item = {
