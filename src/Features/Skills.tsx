@@ -4,56 +4,65 @@ import { motion } from 'framer-motion';
 
 const skillCategories = [
   {
-    title: 'Frontend',
-    icon: '⚛',
+    title: 'AI systems',
+    icon: '◈',
     skills: [
-      'React',
-      'TypeScript',
-      'JavaScript',
-      'Zustand',
-      'TanStack Query',
-      'Redux',
-      'D3.js',
-      'Next.js',
-      'Design Systems',
+      'LLM orchestration',
+      'Tool-using agents',
+      'Prompt & schema design',
+      'RAG (LangChain)',
+      'Evals & guardrails',
+      'Human-in-the-loop design',
+      'PHI/PII minimization',
     ],
   },
   {
     title: 'Backend',
     icon: '⚙',
     skills: [
+      'Python (Django, FastAPI)',
       'Node.js',
-      'Express',
-      'Python (FastAPI, Pydantic',
-      'ASP.NET Core',
-      'SQL and NoSQL',
-      'REST API',
       'GraphQL',
+      'PostgreSQL',
+      'Celery',
+      'REST APIs',
+      'API contract design',
     ],
   },
   {
-    title: 'Architecture',
-    icon: '◎',
+    title: 'Frontend',
+    icon: '⚛',
     skills: [
-      'Clean Architecture',
-      'CQRS',
-      'API Contract Design',
-      'Microservices',
-      'Feature Flags',
+      'React',
+      'TypeScript',
+      'Next.js',
+      'D3.js',
+      'TanStack Query',
+      'Zustand',
+      'Design systems',
     ],
   },
   {
-    title: 'DevOps & Testing',
+    title: 'Data & infrastructure',
     icon: '✦',
     skills: [
       'AWS',
-      'Azure',
       'Docker',
-      'Jest',
-      'React Testing Library',
-      'MSW',
-      'TDD & BDD',
+      'Snowflake & dbt',
+      'LaunchDarkly',
+      'GitHub Actions',
+      'Tracing & observability',
     ],
+  },
+  {
+    title: 'Testing',
+    icon: '◎',
+    skills: ['Jest', 'React Testing Library', 'MSW', 'Pytest', 'TDD & BDD'],
+  },
+  {
+    title: 'Picking up right now',
+    icon: '↗',
+    skills: ['Go', 'OpenTelemetry', 'Kubernetes'],
   },
 ];
 
@@ -62,17 +71,29 @@ const SkillsSection = () => {
     <section id='skills' className='text-white py-16 md:py-24'>
       <div className='max-w-[1400px] mx-auto px-6 md:px-10 xl:px-20'>
         <motion.h2
-          className='text-3xl md:text-4xl lg:text-5xl font-light mb-12 md:mb-16'
+          className='text-3xl md:text-4xl lg:text-5xl font-light mb-6'
           initial={{ opacity: 0, x: -40 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true, margin: '-100px' }}
           transition={{ duration: 0.7, ease: 'easeOut' }}
         >
-          Technical Skills
+          What I work with
         </motion.h2>
 
+        <motion.p
+          className='text-lg md:text-xl font-light text-white/60 max-w-[700px] mb-12 md:mb-16'
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true, margin: '-100px' }}
+          transition={{ duration: 0.6, delay: 0.15, ease: 'easeOut' }}
+        >
+          {
+            'Roughly in the order I reach for them. The last group is honest about where I am still learning.'
+          }
+        </motion.p>
+
         <motion.div
-          className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-10'
+          className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10'
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-100px' }}

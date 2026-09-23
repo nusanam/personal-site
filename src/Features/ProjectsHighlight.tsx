@@ -3,25 +3,36 @@
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 
-const projects = [
+type Project = {
+  title: string;
+  subtitle: string;
+  description: string;
+  tech: string[];
+  achievement?: string;
+  link: string;
+  image?: string;
+};
+
+const projects: Project[] = [
+  // Drydock goes here once github.com/nusanam/drydock is public.
   {
     title: 'Thyroid Reproductive Hormone Health Explorer',
     subtitle:
-      "Uses evidence-based research to visualize hypothyroid effects on women's health",
+      "Visualizing what the research says about hypothyroidism and women's health",
     description:
-      'A thyroid health exploration tool showing the cascade from thyroid dysfunction to reproductive impacts with interactive depth at each node.',
-    tech: ['React', 'D3.js', 'Python', 'Typescript', 'TailwindCSS'],
-    achievement: "To be featured on Reproductive Fertility Doctor\'s Podcast",
+      'An interactive walk through the cascade from thyroid dysfunction to reproductive effects, where each node opens into the evidence behind it.',
+    tech: ['React', 'D3.js', 'Python', 'TypeScript', 'TailwindCSS'],
+    achievement: "To be featured on a reproductive fertility doctor's podcast",
     link: 'https://thyroid-explorer.vercel.app/',
     image: '/assets/thyroid.png',
   },
   {
     title: 'Reactime',
-    subtitle: 'Open Source React DevTool',
+    subtitle: 'Open source React devtool',
     description:
-      'Chrome DevTools extension for visualizing React state changes in real time. Nominated for React Open Source Award (2020).',
+      'A Chrome DevTools extension for time travel debugging of React state. Co-founded it in 2019 and it has picked up 2,200+ stars since.',
     tech: ['React', 'D3.js', 'Chrome Extension API', 'TypeScript'],
-    achievement: 'Nominated for React Open Source Award 2020',
+    achievement: 'Nominated for a React Open Source Award in 2020',
     link: 'https://github.com/open-source-labs/Reactime',
     image: '/assets/reactimev26.png',
   },
@@ -38,7 +49,7 @@ const ProjectsHighlight = () => {
           viewport={{ once: true, margin: '-100px' }}
           transition={{ duration: 0.7, ease: 'easeOut' }}
         >
-          Featured Projects
+          Things I have built
         </motion.h2>
 
         <motion.div
@@ -73,7 +84,7 @@ const ProjectsHighlight = () => {
                       rel='noopener noreferrer'
                       className='inline-flex items-center text-accent-teal hover:text-white transition-colors duration-200 underline underline-offset-4'
                     >
-                      View Project →
+                      View project →
                     </a>
                   </div>
                 </div>
@@ -118,7 +129,7 @@ const ProjectsHighlight = () => {
                   rel='noopener noreferrer'
                   className='mt-6 inline-flex items-center text-accent-teal hover:text-white transition-colors duration-200 underline underline-offset-4'
                 >
-                  View Project →
+                  View project →
                 </a>
               )}
             </div>

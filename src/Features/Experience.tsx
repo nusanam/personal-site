@@ -4,15 +4,29 @@ import { motion } from 'framer-motion';
 
 const experiences = [
   {
-    company: 'Premier Inc.',
-    role: 'Software Engineer',
-    period: 'Aug 2024 – Present',
+    company: 'Tomorrow Health',
+    role: 'Senior Software Engineer',
+    period: 'Apr 2026 – Present',
     location: 'Remote',
     highlights: [
-      'Recognized for technical precision and surfacing critical domain gaps, optimizing releases ahead of $2.6B acquisition',
-      'Drove architecture decisions on greenfield React/TypeScript frontend and .NET + C# CQRS backend API contracts, delivering flexible UI foundations ahead of specs to unblock downstream teams',
-      'Modernized legacy .NET monolith by strangling reporting modules into high performance FastAPI microservices while migrating to React microfrontends. This architecture leverages feature flags for 0% downtime during rollout of new supply chain analytics',
-      'Engineered a Python-based automation engine using LangChain and Azure OpenAI (RAG) to orchestrate local environment bootstrapping; integrated PyWin32 for OS level synchronization and git workflow automation, slashing VM setup time by 88% and saving 480+ annual engineering hours',
+      'Built THEA, an autonomous voice agent that calls provider offices to collect the clinical documents needed to bill home medical equipment orders. I owned the Celery jobs that run the business rules, the GraphQL layer on top of them, and the console operators use to watch and correct the agent.',
+      'Designed the call gating: daily and weekly caps per phone line, business hours checks in each office timezone, do-not-call handling, and a closed-world outcome model where anything the system does not recognize goes to a human instead of retrying blind.',
+      'Reverse engineered a 5,000 line undocumented Google Apps Script system before the production port, to work out which business rules were actually load bearing and which were just assumed.',
+      'Rebalanced the retry schedule using real pilot data, where connect rates ranged from 71% at 10am to 36% at 2pm. Piloted with five supplier companies, several of which converted to contracts.',
+      'Worked on Horizon, an LLM pipeline that turns incoming faxed orders into draft orders for staff review. I designed the classification schema, built the admin GraphQL tooling operations needed to review AI processed records that previously had no visibility, and ran the phased multi-org rollout behind LaunchDarkly.',
+      'Cohort analysis against our Snowflake and dbt models showed AI assisted handling cut staff review time from about 10.5 to 8.5 minutes per order, with AI fax adoption reaching 75%.',
+    ],
+  },
+  {
+    company: 'Premier Inc.',
+    role: 'Software Engineer',
+    period: 'Aug 2024 – 2026',
+    location: 'Remote',
+    highlights: [
+      'Worked on a greenfield supply chain platform for 4,000+ hospitals through a $2.6B acquisition, mostly on surfacing domain gaps early enough that they did not become release problems.',
+      'Drove architecture decisions on the React/TypeScript frontend and the .NET + C# CQRS backend API contracts, shipping flexible UI foundations ahead of the specs so downstream teams were not blocked.',
+      'Strangled reporting modules out of a legacy .NET monolith into FastAPI services while migrating the frontend to React microfrontends, using feature flags to roll out with no downtime.',
+      'Built a Python automation engine on LangChain and Azure OpenAI (RAG) that bootstrapped local environments and automated git workflows, cutting VM setup time by 88% and saving 480+ engineering hours a year.',
     ],
   },
   {
@@ -21,10 +35,10 @@ const experiences = [
     period: 'Nov 2022 – Aug 2024',
     location: 'New York, NY',
     highlights: [
-      'Built metric-driven D3.js visualizations for AI-powered platform, contributing to 30% increase in customer adoption',
-      'Led Q2 charting initiative: designed Python service layers to eliminate repetitive config, shipping 2 weeks ahead of deadline',
-      'Refactored architecture (HOCs, reducers, data pipelines) for better maintainability, cutting avg. cyclomatic complexity by 33%',
-      'Improved frontend latency by ~0.8s through API contract redesign and optimized client-side data handling',
+      'Built the metric benchmarking and ML projection visualizations in D3.js for the clinical trial platform, including the layer used on the Moderna COVID-19 vaccine trials.',
+      'Led the Q2 charting initiative and designed Python service layers that removed repetitive config, shipping two weeks early.',
+      'Refactored HOCs, reducers and data pipelines for maintainability, cutting average cyclomatic complexity by 33%.',
+      'Cut frontend latency by roughly 0.8s by redesigning the API contract and how the client handled the data.',
     ],
   },
   {
@@ -33,8 +47,8 @@ const experiences = [
     period: 'Apr 2022 – Oct 2022',
     location: 'Remote',
     highlights: [
-      'Stabilized rapidly scaling microservice architecture by building global error handling middleware in Node, restoring service observability and reducing unhandled exceptions by 60%',
-      'Isolated AWS upload failures using telemetry, enabling rapid recovery + safe database rollbacks during production incidents',
+      'Stabilized a rapidly scaling microservice architecture with global error handling middleware in Node, which restored observability and cut unhandled exceptions by 60%.',
+      'Isolated AWS upload failures using telemetry, which made recovery and safe database rollbacks possible during production incidents.',
     ],
   },
   {
@@ -43,8 +57,8 @@ const experiences = [
     period: 'Jan 2021 – Apr 2022',
     location: 'New York / Remote',
     highlights: [
-      'Led 3-person engineering team to design and launch a platform improving access to legal resources',
-      'Partnered with CEO to launch a greenfield React, Node, and Python platform; engineered FastAPI for data logic and Express for real-time APIs with GitHub Actions CI/CD for 100% availability via TDD',
+      'Led a 3 person engineering team to design and launch a platform improving access to legal resources.',
+      'Partnered with the CEO on a greenfield React, Node and Python platform, with FastAPI for data logic, Express for real-time APIs, and GitHub Actions CI/CD built around TDD.',
     ],
   },
   {
@@ -53,8 +67,8 @@ const experiences = [
     period: 'Oct 2019 – Jan 2021',
     location: 'New York, NY',
     highlights: [
-      'Transformed core platform infrastructure to power remote workflows during the pandemic using Docker',
-      'Led public JavaScript workshops for over 100 people; taught Python/AWS deployment workshops to bootcamp cohortss',
+      'Moved core platform infrastructure onto Docker so the team could work remotely through the pandemic.',
+      'Ran public JavaScript workshops for over 100 people, and taught Python and AWS deployment workshops to bootcamp cohorts.',
     ],
   },
   {
@@ -63,31 +77,31 @@ const experiences = [
     period: 'Aug 2019 – Dec 2021',
     location: 'New York, NY',
     highlights: [
-      'Architected Reactime, a time-travel debugging devtool for React state; A/B tested options for a D3.js visualization rendering state changes via tree traversal of React fiber and AST parsing to detect React hooks in webpack bundles',
-      'Published npm package for state tracking integration with Chrome devtools',
-      'Configured port-based system for simultaneous debugging of multiple React applications',
+      'Architected Reactime, a time travel debugging devtool for React state. The D3.js visualization renders state changes by traversing the React fiber tree, with AST parsing to detect hooks inside webpack bundles.',
+      'Published the npm package for state tracking integration with Chrome devtools.',
+      'Built a port based system so you can debug several React applications at once.',
     ],
   },
   {
     company: 'Allergy Asthma Sleep Center',
-    role: 'Db Admin & Developer',
+    role: 'DB Admin & Developer',
     period: '2017 – 2019',
     location: 'New York, NY',
     highlights: [
-      'Built custom patient data platform on AWS with SQL database, role based authentication, and clinical intake forms to digitize patient allergy and sleep records from previously managed handwritten documentation',
-      'Designed UIs enabling clinical staff to enter and retrieve patient information across unified system, improving data accessibility and reducing administrative overhead for providers',
-      'Automated data synchronization across previously siloed clinical records, streamlining documentation routing to appropriate providers, reducing manual processing time by hours a day',
+      'Built a custom patient data platform on AWS with a SQL database, role based authentication and clinical intake forms, replacing handwritten allergy and sleep records.',
+      'Designed the interfaces clinical staff used to enter and retrieve patient information in one place, instead of across separate systems.',
+      'Automated synchronization across previously siloed clinical records, which routed documentation to the right provider and cut hours of manual processing a day.',
     ],
   },
   {
-    company: 'MBCC (Nonprofit) — Web Developer',
+    company: 'MBCC (Nonprofit)',
     role: 'Web Developer',
-    period: '2014-2016',
-    location: 'New York, NY + Boston, MA (travel required)',
+    period: '2014 – 2016',
+    location: 'New York, NY + Boston, MA',
     highlights: [
-      'Developed and maintained consumer facing web features including dynamic content displays and event pages, managing thousands of media assets across campaigns',
-      'Built intake and registration pages integrating with external platforms to dynamically generate user profile pages, improving fundraiser and event participant onboarding experiences',
-      'Maintained operational databases tracking stakeholder relationships across sponsors, volunteers, and participants for multiple annual events',
+      'Built and maintained consumer facing web features including dynamic content displays and event pages, across thousands of media assets.',
+      'Built intake and registration pages that integrated with external platforms to generate participant profile pages, improving fundraiser and event onboarding.',
+      'Maintained the databases tracking sponsors, volunteers and participants across multiple annual events.',
     ],
   },
 ];
@@ -103,7 +117,7 @@ const ExperienceSection = () => {
           viewport={{ once: true, margin: '-100px' }}
           transition={{ duration: 0.7, ease: 'easeOut' }}
         >
-          Experience
+          Where I have worked
         </motion.h2>
 
         <motion.div
