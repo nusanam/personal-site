@@ -20,7 +20,7 @@ const experiences = [
   {
     company: 'Premier Inc.',
     role: 'Software Engineer',
-    period: 'Aug 2024 – 2026',
+    period: 'Aug 2024 – Apr 2026',
     location: 'Remote',
     highlights: [
       'Worked on a greenfield supply chain platform for 4,000+ hospitals through a $2.6B acquisition, mostly on surfacing domain gaps early enough that they did not become release problems.',
