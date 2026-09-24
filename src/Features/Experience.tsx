@@ -9,12 +9,12 @@ const experiences = [
     period: 'Apr 2026 – Present',
     location: 'Remote',
     highlights: [
-      'Built THEA, an autonomous voice agent that calls provider offices to collect the clinical documents needed to bill home medical equipment orders. I owned the Celery jobs that run the business rules, the GraphQL layer on top of them, and the console operators use to watch and correct the agent.',
-      'Designed the call gating: daily and weekly caps per phone line, business hours checks in each office timezone, do-not-call handling, and a closed-world outcome model where anything the system does not recognize goes to a human instead of retrying blind.',
-      'Reverse engineered a 5,000 line undocumented Google Apps Script system before the production port, to work out which business rules were actually load bearing and which were just assumed.',
-      'Rebalanced the retry schedule using real pilot data, where connect rates ranged from 71% at 10am to 36% at 2pm. Piloted with five supplier companies, several of which converted to contracts.',
-      'Worked on Horizon, an LLM pipeline that turns incoming faxed orders into draft orders for staff review. I designed the classification schema, built the admin GraphQL tooling operations needed to review AI processed records that previously had no visibility, and ran the phased multi-org rollout behind LaunchDarkly.',
-      'Cohort analysis against our Snowflake and dbt models showed AI assisted handling cut staff review time from about 10.5 to 8.5 minutes per order, with AI fax adoption reaching 75%.',
+      'Co-planned and co-built the migration of THEA, an autonomous AI voice agent that chases the documents needed to bill medical equipment orders, from a Google Apps Script and Sheets prototype to a production Python platform.',
+      'Reverse engineered a 5,000 line script into its load bearing agent rules and rebuilt them as Celery cron jobs behind a GraphQL API. Piloted with 10 supplier companies over one week each, 75% converting to paid contracts, generating roughly $2,000 in weekly revenue per company.',
+      'Designed and iteratively built the React and TypeScript admin UI for THEA, collapsing 5+ tabs of patient order data into a two column filterable doc chase status and detail view, cutting human escalation review time from 60 to 10 minutes per case.',
+      'Built the safety gates that let THEA operate in a regulated billing environment, gating billing on a single verified document from the doc chase pipeline rather than on call activity, cutting false positive billing errors 88% across pilot companies.',
+      'Built supplier and admin self serve UI for two of six DME routing modernization initiatives, part of a broader effort that cut the routing ticket to order ratio from about 25% to under 20%.',
+      'Built the Gemini classification pipeline and prompt schema behind AI fax intake and ran a phased rollout, driving AI fax adoption to 73% of fax orders and cutting manual offshore completion.',
     ],
   },
   {
