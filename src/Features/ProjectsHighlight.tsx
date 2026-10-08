@@ -25,8 +25,9 @@ const projects: Project[] = [
     tech: ['Go', 'Anthropic API', 'OpenTelemetry', 'JavaScript'],
     achievement:
       'The demo page replays a real run and lets you edit any file and run its actual tests in your browser',
-    link: 'https://github.com/nusanam/drydock',
-    linkLabel: 'View the code',
+    link: 'https://nusanam.com/drydock',
+    linkLabel: 'Try the live demo',
+    repoLink: 'https://github.com/nusanam/drydock',
   },
   {
     title: 'Snowlien',
