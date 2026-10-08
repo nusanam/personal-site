@@ -10,11 +10,23 @@ type Project = {
   tech: string[];
   achievement?: string;
   link: string;
+  linkLabel?: string;
+  repoLink?: string;
   image?: string;
 };
 
 const projects: Project[] = [
-  // Drydock goes here once github.com/nusanam/drydock is public.
+  {
+    title: 'Drydock',
+    subtitle: 'An agent that migrates code, where the test suite decides',
+    description:
+      'Point it at a mechanical migration and it works one file at a time: propose a replacement, run that file’s tests, keep the change if they pass, feed the failure back if they do not, then revert and flag the file for a human. The agent never reports its own success. Writes and commands go through a policy engine with separate read and write allowlists and a budget on steps, tokens, dollars and wall clock.',
+    tech: ['Go', 'Anthropic API', 'OpenTelemetry', 'JavaScript'],
+    achievement:
+      'The demo page replays a real run and lets you edit any file and run its actual tests in your browser',
+    link: 'https://github.com/nusanam/drydock',
+    linkLabel: 'View the code',
+  },
   {
     title: 'Thyroid Reproductive Hormone Health Explorer',
     subtitle:
@@ -122,16 +134,28 @@ const ProjectsHighlight = () => {
                 ))}
               </div>
 
-              {project.link && (
-                <a
-                  href={project.link}
-                  target='_blank'
-                  rel='noopener noreferrer'
-                  className='mt-6 inline-flex items-center text-accent-teal hover:text-white transition-colors duration-200 underline underline-offset-4'
-                >
-                  View project →
-                </a>
-              )}
+              <div className='mt-6 flex flex-wrap items-center gap-6'>
+                {project.link && (
+                  <a
+                    href={project.link}
+                    target='_blank'
+                    rel='noopener noreferrer'
+                    className='inline-flex items-center text-accent-teal hover:text-white transition-colors duration-200 underline underline-offset-4'
+                  >
+                    {project.linkLabel ?? 'View project'} →
+                  </a>
+                )}
+                {project.repoLink && (
+                  <a
+                    href={project.repoLink}
+                    target='_blank'
+                    rel='noopener noreferrer'
+                    className='inline-flex items-center text-white/60 hover:text-white transition-colors duration-200 underline underline-offset-4'
+                  >
+                    Source →
+                  </a>
+                )}
+              </div>
             </div>
           ))}
         </motion.div>
