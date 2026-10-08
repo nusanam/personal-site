@@ -99,8 +99,10 @@ const HeroSection = () => {
             workflows to reduce operations time. Previously architected{' '}
             <em>React</em> and <em>Python</em> / <em>Node</em> services for a
             greenfield supply chain platform at Premier Inc. during a{' '}
-            <em>$2.6B acquisition</em>, and AI-powered clinical trial
-            visualizations at Medidata.
+            <em>$2.6B acquisition</em>. At Medidata, built metric benchmarking
+            and ML-projected visualizations for an AI powered clinical trial
+            platform serving <em>11M+ patients</em>, notably helping{' '}
+            <em>Moderna</em> bring their COVID vaccine trials faster to market.
           </motion.p>
 
           <motion.div
