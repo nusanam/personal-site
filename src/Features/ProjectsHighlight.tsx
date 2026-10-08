@@ -28,9 +28,10 @@ const projects: Project[] = [
     link: 'https://nusanam.com/drydock',
     linkLabel: 'Try the live demo',
     repoLink: 'https://github.com/nusanam/drydock',
+    image: '/assets/drydock.png',
   },
   {
-    title: 'Snowlien',
+    title: 'Snowline',
     subtitle: 'A wallet-side project on Avalanche',
     description:
       'In progress. Core wallet backend work on Avalanche, written up here once the first milestone is shippable.',
