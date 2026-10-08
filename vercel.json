@@ -5,5 +5,11 @@
       "destination": "https://thyroid-explorer.vercel.app",
       "permanent": true
     }
+  ],
+  "rewrites": [
+    {
+      "source": "/drydock",
+      "destination": "/drydock/index.html"
+    }
   ]
 }

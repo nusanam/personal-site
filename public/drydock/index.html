@@ -1,0 +1,1041 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Drydock</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap">
+<style>
+  :root {
+    color-scheme: light;
+    --ground: #f2f5f8;
+    --panel: #ffffff;
+    --panel-2: #eaeff4;
+    --line: #d7dfe7;
+    --line-soft: #e6ecf1;
+    --ink: #111a23;
+    --muted: #5c6b7a;
+    --accent: #1f5f8b;
+    --accent-soft: #e2edf5;
+    --pass: #15765a;
+    --pass-soft: #dff0e9;
+    --fail: #ad4529;
+    --fail-soft: #fae4dd;
+    --wait: #8f6409;
+    --wait-soft: #f8eed6;
+    --radius: 6px;
+    --mono: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+    --sans: 'IBM Plex Sans', ui-sans-serif, system-ui, -apple-system, sans-serif;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      color-scheme: dark;
+      --ground: #0c1117;
+      --panel: #141c25;
+      --panel-2: #1b242e;
+      --line: #263039;
+      --line-soft: #1e2831;
+      --ink: #dde6ee;
+      --muted: #8798a8;
+      --accent: #63a6d0;
+      --accent-soft: #16303f;
+      --pass: #45b78c;
+      --pass-soft: #12302a;
+      --fail: #e2826a;
+      --fail-soft: #34211c;
+      --wait: #d29f3f;
+      --wait-soft: #302713;
+    }
+  }
+
+  :root[data-theme="dark"] {
+    color-scheme: dark;
+    --ground: #0c1117;
+    --panel: #141c25;
+    --panel-2: #1b242e;
+    --line: #263039;
+    --line-soft: #1e2831;
+    --ink: #dde6ee;
+    --muted: #8798a8;
+    --accent: #63a6d0;
+    --accent-soft: #16303f;
+    --pass: #45b78c;
+    --pass-soft: #12302a;
+    --fail: #e2826a;
+    --fail-soft: #34211c;
+    --wait: #d29f3f;
+    --wait-soft: #302713;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--ground);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-size: 14px;
+    line-height: 1.5;
+  }
+
+  .wrap {
+    max-width: 1220px;
+    margin: 0 auto;
+    padding-inline: 16px;
+    padding-block: 28px 56px;
+  }
+
+  /* ---------- header ---------- */
+
+  .masthead {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 16px;
+    padding-bottom: 18px;
+    border-bottom: 1px solid var(--line);
+  }
+
+  h1 {
+    font-size: 26px;
+    font-weight: 600;
+    letter-spacing: -0.015em;
+    margin: 0 0 4px;
+  }
+
+  .tagline {
+    margin: 0;
+    color: var(--muted);
+    max-width: 62ch;
+  }
+
+  .tagline strong { color: var(--ink); font-weight: 600; }
+
+  .run-btn {
+    font-family: var(--sans);
+    font-size: 14px;
+    font-weight: 600;
+    color: #fff;
+    background: var(--accent);
+    border: 1px solid var(--accent);
+    border-radius: var(--radius);
+    padding: 10px 20px;
+    cursor: pointer;
+    white-space: nowrap;
+  }
+  .run-btn:hover { filter: brightness(1.08); }
+  .run-btn:disabled { opacity: 0.5; cursor: default; filter: none; }
+  .run-btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+  /* ---------- the brief ---------- */
+
+  .brief {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 22px;
+    padding: 14px 0 18px;
+    font-family: var(--mono);
+    font-size: 12.5px;
+    color: var(--muted);
+  }
+  .brief b { color: var(--ink); font-weight: 500; }
+
+  .sample-note {
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+    background: var(--wait-soft);
+    border-left: 3px solid var(--wait);
+    border-radius: 0 var(--radius) var(--radius) 0;
+    padding: 10px 14px;
+    margin-bottom: 20px;
+    color: var(--ink);
+    font-size: 13px;
+  }
+  .sample-note span:first-child {
+    font-family: var(--mono);
+    font-weight: 600;
+    color: var(--wait);
+    text-transform: uppercase;
+    font-size: 11px;
+    letter-spacing: 0.06em;
+    padding-top: 1px;
+    white-space: nowrap;
+  }
+
+  /* ---------- summary ---------- */
+
+  .summary {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(104px, 1fr));
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    background: var(--panel);
+    margin-bottom: 22px;
+    overflow: hidden;
+  }
+  .summary[hidden] { display: none; }
+
+  .stat {
+    padding: 11px 14px;
+    border-right: 1px solid var(--line-soft);
+  }
+  .stat:last-child { border-right: 0; }
+
+  .stat dt {
+    font-family: var(--mono);
+    font-size: 10.5px;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin: 0 0 3px;
+  }
+  .stat dd {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 600;
+    font-variant-numeric: tabular-nums;
+  }
+  .stat dd.pass { color: var(--pass); }
+  .stat dd.flag { color: var(--fail); }
+
+  /* ---------- layout ---------- */
+
+  .panes {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 18px;
+    align-items: start;
+  }
+
+  .panes > :last-child {
+    position: sticky;
+    top: env(safe-area-inset-top, 0px);
+  }
+
+  @media (max-width: 900px) {
+    .panes { grid-template-columns: minmax(0, 1fr); }
+    .panes > :last-child { position: static; }
+  }
+
+  .pane {
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    overflow: hidden;
+  }
+
+  .pane-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 9px 14px;
+    border-bottom: 1px solid var(--line);
+    background: var(--panel-2);
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  /* ---------- timeline ---------- */
+
+  .file-row {
+    border-bottom: 1px solid var(--line-soft);
+  }
+  .file-row:last-child { border-bottom: 0; }
+
+  .file-btn {
+    display: grid;
+    grid-template-columns: 18px minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    padding: 10px 14px;
+    background: none;
+    border: 0;
+    color: inherit;
+    font: inherit;
+    text-align: left;
+    cursor: pointer;
+  }
+  .file-btn:hover { background: var(--panel-2); }
+  .file-btn[aria-current="true"] { background: var(--accent-soft); }
+  .file-btn:focus-visible { outline: 2px solid var(--accent); outline-offset: -2px; }
+
+  .file-name {
+    font-family: var(--mono);
+    font-size: 13px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .mark {
+    font-family: var(--mono);
+    font-size: 13px;
+    font-weight: 600;
+    text-align: center;
+  }
+  .mark.pending { color: var(--muted); }
+  .mark.working { color: var(--wait); }
+  .mark.kept { color: var(--pass); }
+  .mark.flagged { color: var(--fail); }
+
+  .verdict {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    padding: 2px 8px;
+    border-radius: 999px;
+    white-space: nowrap;
+  }
+  .verdict.kept { color: var(--pass); background: var(--pass-soft); }
+  .verdict.flagged { color: var(--fail); background: var(--fail-soft); }
+  .verdict.working { color: var(--wait); background: var(--wait-soft); }
+  .verdict.pending { color: var(--muted); }
+
+  .attempts {
+    padding: 0 14px 12px 42px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .attempts:empty { display: none; }
+
+  .attempt {
+    border-left: 2px solid var(--line);
+    padding-left: 12px;
+  }
+  .attempt.ok { border-left-color: var(--pass); }
+  .attempt.bad { border-left-color: var(--fail); }
+
+  .attempt-head {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px 10px;
+    align-items: baseline;
+    margin-bottom: 4px;
+  }
+  .attempt-label {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .attempt-note { color: var(--muted); font-size: 13px; }
+
+  .test-line {
+    display: grid;
+    grid-template-columns: 16px minmax(0, 1fr);
+    gap: 6px;
+    font-size: 12.5px;
+    padding: 1px 0;
+  }
+  .test-line .tick { font-family: var(--mono); font-weight: 600; }
+  .test-line.ok .tick { color: var(--pass); }
+  .test-line.bad .tick { color: var(--fail); }
+  .test-err {
+    font-family: var(--mono);
+    font-size: 11.5px;
+    color: var(--fail);
+    background: var(--fail-soft);
+    border-radius: 4px;
+    padding: 5px 8px;
+    margin-top: 3px;
+    overflow-wrap: anywhere;
+  }
+
+  .flag-note {
+    margin: 2px 0 0;
+    padding: 9px 12px;
+    background: var(--fail-soft);
+    border-radius: var(--radius);
+    font-size: 13px;
+  }
+
+  /* ---------- inspector ---------- */
+
+  .tabs {
+    display: flex;
+    gap: 2px;
+  }
+  .tab {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    background: none;
+    border: 0;
+    border-bottom: 2px solid transparent;
+    color: var(--muted);
+    padding: 3px 8px;
+    cursor: pointer;
+  }
+  .tab[aria-selected="true"] { color: var(--ink); border-bottom-color: var(--accent); }
+  .tab:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+  .code {
+    margin: 0;
+    font-family: var(--mono);
+    font-size: 12.5px;
+    line-height: 1.65;
+    overflow-x: auto;
+    max-height: 62vh;
+    overflow-y: auto;
+  }
+  .code .ln {
+    display: block;
+    padding: 0 14px;
+    white-space: pre;
+    min-height: 1.65em;
+  }
+  .code .ln.add { background: var(--pass-soft); }
+  .code .ln.del { background: var(--fail-soft); }
+  .code .ln .sign { display: inline-block; width: 1.2em; color: var(--muted); }
+  .code .ln.add .sign { color: var(--pass); }
+  .code .ln.del .sign { color: var(--fail); }
+
+  .try {
+    padding: 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .try p { margin: 0; color: var(--muted); font-size: 13px; }
+  .try textarea {
+    font-family: var(--mono);
+    font-size: 12.5px;
+    line-height: 1.6;
+    width: 100%;
+    min-height: 240px;
+    resize: vertical;
+    background: var(--ground);
+    color: var(--ink);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 10px 12px;
+  }
+  .try textarea:focus-visible { outline: 2px solid var(--accent); outline-offset: -1px; }
+
+  .try-actions { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+
+  .ghost-btn {
+    font-family: var(--sans);
+    font-size: 13px;
+    font-weight: 500;
+    background: var(--panel);
+    color: var(--ink);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 7px 14px;
+    cursor: pointer;
+  }
+  .ghost-btn:hover { background: var(--panel-2); }
+  .ghost-btn.primary { background: var(--accent); border-color: var(--accent); color: #fff; }
+  .ghost-btn.primary:hover { filter: brightness(1.08); }
+  .ghost-btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+  .try-results { display: flex; flex-direction: column; gap: 2px; }
+
+  .empty {
+    padding: 34px 18px;
+    color: var(--muted);
+    text-align: center;
+  }
+
+  /* ---------- footer ---------- */
+
+  .how {
+    margin-top: 30px;
+    padding-top: 22px;
+    border-top: 1px solid var(--line);
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 22px;
+  }
+  .how h2 {
+    font-size: 12px;
+    font-family: var(--mono);
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin: 0 0 6px;
+  }
+  .how p { margin: 0; color: var(--muted); max-width: 46ch; }
+
+  .fatal {
+    border: 1px solid var(--fail);
+    background: var(--fail-soft);
+    border-radius: var(--radius);
+    padding: 14px;
+    font-family: var(--mono);
+    font-size: 12.5px;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .attempt { animation: rise 220ms ease-out; }
+    @keyframes rise {
+      from { opacity: 0; transform: translateY(-3px); }
+      to { opacity: 1; transform: none; }
+    }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="masthead">
+    <div>
+      <h1>Drydock</h1>
+      <p class="tagline">
+        An agent that does the migration nobody wants to do, one file at a time.
+        <strong>The test suite decides what gets kept.</strong>
+      </p>
+    </div>
+    <button class="run-btn" id="run">Run migration</button>
+  </header>
+
+  <div class="brief">
+    <span>repo <b id="b-repo">…</b></span>
+    <span>task <b id="b-task">…</b></span>
+    <span>model <b id="b-model">…</b></span>
+    <span>files <b id="b-files">…</b></span>
+  </div>
+
+  <div class="sample-note" id="sample-note" hidden>
+    <span>Sample run</span>
+    <span>
+      The diffs below are real, verified migrations, but this replay was assembled by hand rather
+      than recorded from a live model run. Editing any file and running its tests is real either
+      way: the suite executes in your browser against whatever you type.
+    </span>
+  </div>
+
+  <dl class="summary" id="summary" hidden></dl>
+
+  <div class="panes">
+    <section class="pane">
+      <div class="pane-head">
+        <span>Run</span>
+        <span id="run-state">idle</span>
+      </div>
+      <div id="timeline"></div>
+    </section>
+
+    <section class="pane">
+      <div class="pane-head">
+        <span id="inspector-title">Inspector</span>
+        <div class="tabs" role="tablist" id="tabs" hidden>
+          <button class="tab" role="tab" data-tab="diff" aria-selected="true">Diff</button>
+          <button class="tab" role="tab" data-tab="tests" aria-selected="false">Test file</button>
+          <button class="tab" role="tab" data-tab="try" aria-selected="false">Try it</button>
+        </div>
+      </div>
+      <div id="inspector"><p class="empty">Run the migration, then pick a file to see what changed.</p></div>
+    </section>
+  </div>
+
+  <div class="how">
+    <div>
+      <h2>Propose</h2>
+      <p>The agent reads one file and its tests, then writes a replacement. It never sees the rest of the repo, and it cannot reach the network or the filesystem outside the project.</p>
+    </div>
+    <div>
+      <h2>Verify</h2>
+      <p>The file's own test suite runs against the proposal. The agent does not get to report success. If the tests fail, the failure text goes back to it and it tries once more.</p>
+    </div>
+    <div>
+      <h2>Keep or revert</h2>
+      <p>Green tests, the change is kept. Still failing after the retry, the file is put back exactly as it was and flagged for a person, with the reason attached.</p>
+    </div>
+  </div>
+</div>
+
+<script type="module">
+  const $ = (id) => document.getElementById(id);
+  const timeline = $('timeline');
+  const inspector = $('inspector');
+
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const wait = (ms) => new Promise((r) => setTimeout(r, reduceMotion ? 0 : ms));
+
+  let DATA, deps;
+  try {
+    [DATA, deps] = await Promise.all([import('/drydock/run-data.js'), import('/drydock/deps.js')]);
+  } catch (err) {
+    inspector.innerHTML = '';
+    const box = document.createElement('div');
+    box.className = 'fatal';
+    box.textContent = 'Could not load the run data or the date libraries: ' + err.message;
+    inspector.append(box);
+    throw err;
+  }
+
+  globalThis.__DRYDOCK_DEPS = deps;
+
+  const { FILES, TASK, REPO, MODEL, ASSERT_SOURCE, SAMPLE } = DATA;
+
+  $('b-repo').textContent = REPO;
+  $('b-task').textContent = TASK;
+  $('b-model').textContent = MODEL;
+  $('b-files').textContent = FILES.length;
+  $('sample-note').hidden = !SAMPLE;
+
+  // ---------- module plumbing: real ESM evaluation via blob URLs ----------
+
+  const blobUrl = (src) => URL.createObjectURL(new Blob([src], { type: 'text/javascript' }));
+
+  const dateFnsNames = Object.keys(deps.dateFns);
+  const SHIMS = {
+    "'moment'": blobUrl('const d = globalThis.__DRYDOCK_DEPS; export default d.moment;'),
+    "'moment-timezone'": blobUrl('const d = globalThis.__DRYDOCK_DEPS; export default d.momentTz;'),
+    "'date-fns'": blobUrl(
+      'const f = globalThis.__DRYDOCK_DEPS.dateFns;\n' +
+        dateFnsNames.map((n) => `export const ${n} = f.${n};`).join('\n'),
+    ),
+  };
+  const ASSERT_URL = blobUrl(ASSERT_SOURCE);
+
+  function rewrite(source) {
+    let out = source;
+    for (const [spec, url] of Object.entries(SHIMS)) out = out.split(spec).join(`'${url}'`);
+    return out.split("'./assert.js'").join(`'${ASSERT_URL}'`);
+  }
+
+  async function loadModule(source) {
+    const url = blobUrl(rewrite(source));
+    try {
+      return await import(url);
+    } finally {
+      setTimeout(() => URL.revokeObjectURL(url), 0);
+    }
+  }
+
+  // Runs a file's real test suite against arbitrary source, in this browser.
+  async function runTests(file, source) {
+    const suite = await loadModule(file.testSource);
+    let mod = null;
+    let loadError = null;
+    try {
+      mod = await loadModule(source);
+    } catch (err) {
+      loadError = err.message || String(err);
+    }
+    return suite.tests.map((t) => {
+      if (loadError) return { name: t.name, ok: false, error: 'module failed to load: ' + loadError };
+      try {
+        t.run(mod);
+        return { name: t.name, ok: true };
+      } catch (err) {
+        return { name: t.name, ok: false, error: err.message || String(err) };
+      }
+    });
+  }
+
+  // ---------- diff ----------
+
+  function diffLines(before, after) {
+    const A = before.split('\n');
+    const B = after.split('\n');
+    const dp = Array.from({ length: A.length + 1 }, () => new Uint16Array(B.length + 1));
+    for (let i = A.length - 1; i >= 0; i--) {
+      for (let j = B.length - 1; j >= 0; j--) {
+        dp[i][j] = A[i] === B[j] ? dp[i + 1][j + 1] + 1 : Math.max(dp[i + 1][j], dp[i][j + 1]);
+      }
+    }
+    const rows = [];
+    let i = 0;
+    let j = 0;
+    while (i < A.length && j < B.length) {
+      if (A[i] === B[j]) {
+        rows.push({ kind: 'same', text: A[i] });
+        i++;
+        j++;
+      } else if (dp[i + 1][j] >= dp[i][j + 1]) rows.push({ kind: 'del', text: A[i++] });
+      else rows.push({ kind: 'add', text: B[j++] });
+    }
+    while (i < A.length) rows.push({ kind: 'del', text: A[i++] });
+    while (j < B.length) rows.push({ kind: 'add', text: B[j++] });
+    return rows;
+  }
+
+  function renderCode(rows) {
+    const pre = document.createElement('pre');
+    pre.className = 'code';
+    for (const row of rows) {
+      const line = document.createElement('span');
+      line.className = 'ln' + (row.kind === 'add' ? ' add' : row.kind === 'del' ? ' del' : '');
+      const sign = document.createElement('span');
+      sign.className = 'sign';
+      sign.textContent = row.kind === 'add' ? '+' : row.kind === 'del' ? '-' : ' ';
+      line.append(sign, document.createTextNode(row.text));
+      pre.append(line);
+    }
+    return pre;
+  }
+
+  function plainCode(source) {
+    return renderCode(source.split('\n').map((text) => ({ kind: 'same', text })));
+  }
+
+  // ---------- state ----------
+
+  const state = FILES.map((f) => ({ file: f, status: 'pending', shown: [], final: null }));
+  let selected = null;
+  let activeTab = 'diff';
+  let running = false;
+
+  const finalSource = (row) =>
+    row.file.outcome === 'flagged'
+      ? row.file.original
+      : row.file.attempts[row.file.attempts.length - 1].source;
+
+  // ---------- timeline rendering ----------
+
+  function markFor(status) {
+    if (status === 'kept') return ['kept', '✓'];
+    if (status === 'flagged') return ['flagged', '⚑'];
+    if (status === 'working') return ['working', '●'];
+    return ['pending', '·'];
+  }
+
+  function verdictText(status) {
+    if (status === 'kept') return 'kept';
+    if (status === 'flagged') return 'reverted, flagged';
+    if (status === 'working') return 'working';
+    return 'queued';
+  }
+
+  function renderTimeline() {
+    timeline.replaceChildren();
+    for (const row of state) {
+      const wrapEl = document.createElement('div');
+      wrapEl.className = 'file-row';
+
+      const btn = document.createElement('button');
+      btn.className = 'file-btn';
+      btn.setAttribute('aria-current', String(selected === row));
+      btn.addEventListener('click', () => {
+        selected = row;
+        activeTab = 'diff';
+        renderTimeline();
+        renderInspector();
+      });
+
+      const [markClass, glyph] = markFor(row.status);
+      const mark = document.createElement('span');
+      mark.className = 'mark ' + markClass;
+      mark.textContent = glyph;
+
+      const name = document.createElement('span');
+      name.className = 'file-name';
+      name.textContent = row.file.path;
+
+      const verdict = document.createElement('span');
+      verdict.className = 'verdict ' + markClass;
+      verdict.textContent = verdictText(row.status);
+
+      btn.append(mark, name, verdict);
+
+      const attempts = document.createElement('div');
+      attempts.className = 'attempts';
+      row.shown.forEach((shown, index) => attempts.append(renderAttempt(row, shown, index)));
+
+      if (row.status === 'flagged' && row.file.flagReason) {
+        const note = document.createElement('p');
+        note.className = 'flag-note';
+        note.textContent = row.file.flagReason;
+        attempts.append(note);
+      }
+
+      wrapEl.append(btn, attempts);
+      timeline.append(wrapEl);
+    }
+  }
+
+  function renderAttempt(row, shown, index) {
+    const el = document.createElement('div');
+    const anyFail = shown.results && shown.results.some((r) => !r.ok);
+    el.className = 'attempt' + (shown.results ? (anyFail ? ' bad' : ' ok') : '');
+
+    const head = document.createElement('div');
+    head.className = 'attempt-head';
+    const label = document.createElement('span');
+    label.className = 'attempt-label';
+    label.textContent = 'attempt ' + (index + 1) + (shown.ms ? ' · ' + (shown.ms / 1000).toFixed(1) + 's' : '');
+    const note = document.createElement('span');
+    note.className = 'attempt-note';
+    note.textContent = shown.results ? shown.note : 'writing a replacement…';
+    head.append(label, note);
+    el.append(head);
+
+    if (shown.results) {
+      for (const result of shown.results) {
+        const line = document.createElement('div');
+        line.className = 'test-line ' + (result.ok ? 'ok' : 'bad');
+        const tick = document.createElement('span');
+        tick.className = 'tick';
+        tick.textContent = result.ok ? '✓' : '✗';
+        const text = document.createElement('span');
+        text.textContent = result.name;
+        line.append(tick, text);
+        el.append(line);
+        if (!result.ok && result.error) {
+          const err = document.createElement('div');
+          err.className = 'test-err';
+          err.textContent = result.error;
+          el.append(err);
+        }
+      }
+    }
+    return el;
+  }
+
+  // ---------- inspector ----------
+
+  function renderInspector() {
+    const tabs = $('tabs');
+    if (!selected) {
+      tabs.hidden = true;
+      $('inspector-title').textContent = 'Inspector';
+      inspector.replaceChildren(makeEmpty('Run the migration, then pick a file to see what changed.'));
+      return;
+    }
+
+    tabs.hidden = false;
+    $('inspector-title').textContent = selected.file.path;
+    for (const tab of tabs.querySelectorAll('.tab')) {
+      tab.setAttribute('aria-selected', String(tab.dataset.tab === activeTab));
+    }
+
+    if (activeTab === 'diff') {
+      const after = finalSource(selected);
+      if (selected.file.outcome === 'flagged') {
+        const box = document.createElement('div');
+        const note = document.createElement('p');
+        note.className = 'flag-note';
+        note.textContent =
+          'No diff. Both attempts failed the tests, so the file was left exactly as it was.';
+        box.append(note, plainCode(selected.file.original));
+        inspector.replaceChildren(box);
+      } else {
+        inspector.replaceChildren(renderCode(diffLines(selected.file.original, after)));
+      }
+      return;
+    }
+
+    if (activeTab === 'tests') {
+      inspector.replaceChildren(plainCode(selected.file.testSource));
+      return;
+    }
+
+    inspector.replaceChildren(renderTry(selected));
+  }
+
+  function makeEmpty(text) {
+    const p = document.createElement('p');
+    p.className = 'empty';
+    p.textContent = text;
+    return p;
+  }
+
+  function renderTry(row) {
+    const box = document.createElement('div');
+    box.className = 'try';
+
+    const blurb = document.createElement('p');
+    blurb.textContent =
+      'Change anything here and run the tests. This is the real suite from ' +
+      row.file.testPath +
+      ', executing in your browser against exactly what is in this box.';
+
+    const area = document.createElement('textarea');
+    area.id = 'try-' + row.file.path.replace(/[^a-z0-9]/gi, '-');
+    area.spellcheck = false;
+    area.value = row.tryDraft ?? finalSource(row);
+    area.addEventListener('input', () => {
+      row.tryDraft = area.value;
+    });
+
+    const actions = document.createElement('div');
+    actions.className = 'try-actions';
+
+    const runBtn = document.createElement('button');
+    runBtn.className = 'ghost-btn primary';
+    runBtn.textContent = 'Run tests';
+
+    const resetBtn = document.createElement('button');
+    resetBtn.className = 'ghost-btn';
+    resetBtn.textContent = 'Reset';
+
+    const origBtn = document.createElement('button');
+    origBtn.className = 'ghost-btn';
+    origBtn.textContent = 'Load the moment version';
+
+    const results = document.createElement('div');
+    results.className = 'try-results';
+
+    async function go() {
+      runBtn.disabled = true;
+      results.replaceChildren(makeEmpty('running ' + row.file.testPath + '…'));
+      const out = await runTests(row.file, area.value);
+      results.replaceChildren();
+      const passed = out.filter((r) => r.ok).length;
+      const head = document.createElement('div');
+      head.className = 'attempt-label';
+      head.textContent = passed + ' of ' + out.length + ' passing';
+      results.append(head);
+      for (const result of out) {
+        const line = document.createElement('div');
+        line.className = 'test-line ' + (result.ok ? 'ok' : 'bad');
+        const tick = document.createElement('span');
+        tick.className = 'tick';
+        tick.textContent = result.ok ? '✓' : '✗';
+        const text = document.createElement('span');
+        text.textContent = result.name;
+        line.append(tick, text);
+        results.append(line);
+        if (!result.ok && result.error) {
+          const err = document.createElement('div');
+          err.className = 'test-err';
+          err.textContent = result.error;
+          results.append(err);
+        }
+      }
+      runBtn.disabled = false;
+    }
+
+    runBtn.addEventListener('click', go);
+    resetBtn.addEventListener('click', () => {
+      area.value = finalSource(row);
+      row.tryDraft = area.value;
+      results.replaceChildren();
+    });
+    origBtn.addEventListener('click', () => {
+      area.value = row.file.original;
+      row.tryDraft = area.value;
+      results.replaceChildren();
+    });
+
+    actions.append(runBtn, resetBtn, origBtn);
+    box.append(blurb, area, actions, results);
+    return box;
+  }
+
+  // ---------- summary ----------
+
+  function renderSummary() {
+    const done = state.filter((r) => r.status === 'kept' || r.status === 'flagged');
+    if (done.length === 0) return;
+
+    const kept = done.filter((r) => r.status === 'kept').length;
+    const flagged = done.filter((r) => r.status === 'flagged').length;
+    let attempts = 0;
+    let ms = 0;
+    let tokensIn = 0;
+    let tokensOut = 0;
+    for (const row of done) {
+      for (const attempt of row.file.attempts) {
+        attempts += 1;
+        ms += attempt.ms;
+        tokensIn += attempt.tokensIn;
+        tokensOut += attempt.tokensOut;
+      }
+    }
+    // claude-haiku-4-5 list price, USD per million tokens.
+    const cost = (tokensIn / 1e6) * 1.0 + (tokensOut / 1e6) * 5.0;
+
+    const stats = [
+      ['Files', String(done.length), ''],
+      ['Kept', String(kept), 'pass'],
+      ['Flagged', String(flagged), flagged ? 'flag' : ''],
+      ['Attempts', String(attempts), ''],
+      ['Run time', (ms / 1000).toFixed(1) + 's', ''],
+      ['Tokens', (tokensIn + tokensOut).toLocaleString(), ''],
+      ['Cost', '$' + cost.toFixed(4), ''],
+    ];
+
+    const summary = $('summary');
+    summary.replaceChildren();
+    for (const [label, value, tone] of stats) {
+      const cell = document.createElement('div');
+      cell.className = 'stat';
+      const dt = document.createElement('dt');
+      dt.textContent = label;
+      const dd = document.createElement('dd');
+      dd.textContent = value;
+      if (tone) dd.className = tone;
+      cell.append(dt, dd);
+      summary.append(cell);
+    }
+    summary.hidden = false;
+  }
+
+  // ---------- the run ----------
+
+  async function run() {
+    if (running) return;
+    running = true;
+    $('run').disabled = true;
+    $('summary').hidden = true;
+    selected = null;
+    for (const row of state) {
+      row.status = 'pending';
+      row.shown = [];
+      row.tryDraft = undefined;
+    }
+    renderTimeline();
+    renderInspector();
+
+    for (const row of state) {
+      row.status = 'working';
+      $('run-state').textContent = 'migrating ' + row.file.path;
+      renderTimeline();
+      await wait(260);
+
+      for (const attempt of row.file.attempts) {
+        row.shown.push({ note: attempt.note, ms: attempt.ms, results: null });
+        renderTimeline();
+        await wait(380);
+
+        row.shown[row.shown.length - 1].results = attempt.results;
+        renderTimeline();
+        await wait(320);
+      }
+
+      row.status = row.file.outcome;
+      renderTimeline();
+      renderSummary();
+      await wait(180);
+    }
+
+    $('run-state').textContent = 'done';
+    selected = state.find((r) => r.status === 'flagged') || state[0];
+    renderTimeline();
+    renderInspector();
+    running = false;
+    $('run').disabled = false;
+    $('run').textContent = 'Run again';
+  }
+
+  $('run').addEventListener('click', run);
+
+  for (const tab of $('tabs').querySelectorAll('.tab')) {
+    tab.addEventListener('click', () => {
+      activeTab = tab.dataset.tab;
+      renderInspector();
+    });
+  }
+
+  renderTimeline();
+  run();
+</script>
+
+</body>
+</html>
