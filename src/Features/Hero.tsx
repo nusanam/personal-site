@@ -5,11 +5,6 @@ import { motion, useReducedMotion } from 'framer-motion';
 const TITLE = 'Hi, I’m Ruth :)';
 const TYPE_MS = 65;
 
-const intro = [
-  'Built autonomous voice agent that calls offices to chase documentation to bill home medical equipment orders + AI fax intake pipeline at Tomorrow Health.',
-  'Prior to that: a RAG workflow at Premier, clinical trial visualizations at Medidata, and Reactime, an open source React devtool I co-founded that has picked up 2,200+ GitHub stars.',
-];
-
 const container = {
   hidden: {},
   show: { transition: { staggerChildren: 0.45, delayChildren: 0.2 } },
@@ -76,19 +71,37 @@ const HeroSection = () => {
           initial='hidden'
           animate={typingDone ? 'show' : 'hidden'}
         >
-          {intro.map((paragraph, index) => (
-            <motion.p
-              key={index}
-              variants={item}
-              className={
-                index === 0
-                  ? 'text-xl md:text-2xl lg:text-3xl font-light leading-[1.4] max-w-[900px] mt-8 text-white/80'
-                  : 'text-lg md:text-xl font-light leading-[1.55] max-w-[900px] mt-6 text-white/70'
-              }
-            >
-              {paragraph}
-            </motion.p>
-          ))}
+          <motion.p
+            variants={item}
+            className='text-xl md:text-2xl lg:text-3xl font-light leading-[1.4] max-w-[900px] mt-8 text-white/80'
+          >
+            Senior Fullstack Engineer (8+ YOE) specializing in high performance{' '}
+            <span className='underline decoration-2 decoration-accent-teal underline-offset-[6px]'>
+              React, TypeScript, Node, &amp; Python
+            </span>
+          </motion.p>
+
+          <motion.p
+            variants={item}
+            className='text-xl md:text-xl lg:text-2xl font-light leading-[1.4] max-w-[900px] mt-8 text-white/80'
+          >
+            Co-founded<em> Reactime</em>, a state debugging devtool with
+            <em> 2,200+ GitHub stars</em>, nominated for a React Open Source
+            Award.
+          </motion.p>
+
+          <motion.p
+            variants={item}
+            className='text-xl md:text-xl lg:text-2xl font-light leading-[1.4] max-w-[900px] mt-8 text-white/80'
+          >
+            Most recently at <em>Tomorrow Health</em>, helped build an agentic
+            system to chase documentation and used AI to automate complex
+            workflows to reduce operations time. Previously architected{' '}
+            <em>React</em> and <em>Python</em> / <em>Node</em> services for a
+            greenfield supply chain platform at Premier Inc. during a{' '}
+            <em>$2.6B acquisition</em>, and AI-powered clinical trial
+            visualizations at Medidata.
+          </motion.p>
 
           <motion.div
             variants={item}

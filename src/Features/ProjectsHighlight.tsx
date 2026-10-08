@@ -9,10 +9,11 @@ type Project = {
   description: string;
   tech: string[];
   achievement?: string;
-  link: string;
+  link?: string;
   linkLabel?: string;
   repoLink?: string;
   image?: string;
+  comingSoon?: boolean;
 };
 
 const projects: Project[] = [
@@ -26,6 +27,14 @@ const projects: Project[] = [
       'The demo page replays a real run and lets you edit any file and run its actual tests in your browser',
     link: 'https://github.com/nusanam/drydock',
     linkLabel: 'View the code',
+  },
+  {
+    title: 'Snowlien',
+    subtitle: 'A wallet-side project on Avalanche',
+    description:
+      'In progress. Core wallet backend work on Avalanche, written up here once the first milestone is shippable.',
+    tech: ['Avalanche', 'TypeScript', 'Node.js'],
+    comingSoon: true,
   },
   {
     title: 'Thyroid Reproductive Hormone Health Explorer',
@@ -135,6 +144,11 @@ const ProjectsHighlight = () => {
               </div>
 
               <div className='mt-6 flex flex-wrap items-center gap-6'>
+                {project.comingSoon && (
+                  <span className='inline-flex items-center px-3 py-1.5 bg-white/5 border border-white/20 rounded-full text-sm text-white/50'>
+                    Coming soon
+                  </span>
+                )}
                 {project.link && (
                   <a
                     href={project.link}
